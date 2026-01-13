@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" width="280" height="80">
+  <!-- <CB.CPA/> - Component dot notation -->
+  <rect width="280" height="80" fill="#0d0d0d"/>
+  <text x="140" y="52" font-family="JetBrains Mono, monospace" font-size="32" font-weight="600" text-anchor="middle">
+    <tspan fill="#888888">&lt;</tspan><tspan fill="#e5e5e5">CB</tspan><tspan fill="#888888">.</tspan><tspan fill="#e85a2c">CPA</tspan><tspan fill="#888888">/&gt;</tspan>
+  </text>
+</svg>

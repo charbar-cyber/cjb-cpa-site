@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="200" height="80">
+  <!-- Logo 3: {CB} - Object/JSON style -->
+  <rect width="200" height="80" fill="#0d0d0d"/>
+  <text x="100" y="52" font-family="JetBrains Mono, monospace" font-size="36" font-weight="600" text-anchor="middle">
+    <tspan fill="#e85a2c">{</tspan><tspan fill="#e5e5e5">CB</tspan><tspan fill="#e85a2c">}</tspan>
+  </text>
+</svg>
