@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     const DATABASE_ID = '42c2a933-7181-4ae6-88d6-b52527ad934e';
 
     if (!NOTION_TOKEN) {
-        return res.status(500).json({ error: 'Notion token not configured' });
+        return res.status(500).json({ error: 'Notion token not configured', hint: 'Add NOTION_TOKEN to Vercel environment variables' });
     }
 
     // Optional category filter from query params
@@ -60,7 +60,11 @@ export default async function handler(req, res) {
         if (!response.ok) {
             const errorData = await response.json();
             console.error('Notion API error:', errorData);
-            return res.status(response.status).json({ error: 'Failed to fetch posts from Notion' });
+            return res.status(response.status).json({
+                error: 'Failed to fetch posts from Notion',
+                details: errorData.message || errorData.code || 'Unknown error',
+                status: response.status
+            });
         }
 
         const data = await response.json();
