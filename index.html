@@ -20,6 +20,7 @@
             </a>
             <div class="nav-links">
                 <a href="about.html">~/about</a>
+                <a href="pricing.html">~/pricing</a>
                 <a href="#services">~/services</a>
                 <a href="#contact">~/contact</a>
             </div>
@@ -172,10 +173,38 @@
 
                 <div class="contact-form-container">
                     <p class="form-label">Send us a message to get started:</p>
-                    <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
-                        <input type="email" name="email" placeholder="email@example.com" required>
-                        <textarea name="message" placeholder="How can we help?" rows="5" required></textarea>
-                        <button type="submit" class="btn btn-submit">Submit Request</button>
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" name="firstName" id="firstName" placeholder="John" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" name="lastName" id="lastName" placeholder="Smith" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" name="email" id="email" placeholder="you@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">What service are you interested in?</label>
+                            <select name="service" id="service" required>
+                                <option value="" disabled selected>Select a service...</option>
+                                <option value="tax-planning">Tax Planning & Compliance</option>
+                                <option value="bookkeeping">Accounting & Bookkeeping</option>
+                                <option value="consulting">Business Consulting</option>
+                                <option value="multiple">Multiple Services</option>
+                                <option value="not-sure">Not Sure Yet</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Tell us about your situation</label>
+                            <textarea name="message" id="message" placeholder="Briefly describe your business, current challenges, and what you're looking for help with..." rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-submit" id="submit-btn">Submit Request</button>
+                        <p class="form-status" id="form-status"></p>
                     </form>
                 </div>
             </div>
@@ -188,5 +217,52 @@
             <p>&copy; 2026 Charles J Barmore CPA PC. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submit-btn');
+            const formStatus = document.getElementById('form-status');
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+
+            // Update button state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            formStatus.textContent = '';
+            formStatus.className = 'form-status';
+
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ firstName, lastName, email, service, message }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    formStatus.textContent = 'Message sent successfully!';
+                    formStatus.className = 'form-status success';
+                    document.getElementById('contact-form').reset();
+                } else {
+                    formStatus.textContent = data.error || 'Failed to send message. Please try again.';
+                    formStatus.className = 'form-status error';
+                }
+            } catch (error) {
+                formStatus.textContent = 'Failed to send message. Please try again.';
+                formStatus.className = 'form-status error';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Request';
+            }
+        });
+    </script>
 </body>
 </html>
