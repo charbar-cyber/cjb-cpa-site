@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights | Charles J Barmore CPA PC</title>
+    <meta name="description" content="Tax tips, business insights, and accounting guidance from Charles Barmore CPA. Stay informed with practical advice for businesses and individuals.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logos/cb-angle-brackets.svg" alt="CB Logo" class="logo-img">
+                barmore_cpa
+            </a>
+            <div class="nav-links">
+                <a href="about.html">~/about</a>
+                <a href="pricing.html">~/pricing</a>
+                <a href="insights.html">~/insights</a>
+                <a href="index.html#contact">~/contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Insights Hero -->
+    <section class="insights-hero">
+        <div class="container">
+            <h1 class="insights-title">./insights</h1>
+            <p class="insights-intro">
+                Practical guidance on tax strategy, business operations, and accounting. No fluff, just useful information.
+            </p>
+        </div>
+    </section>
+
+    <!-- Category Filters -->
+    <section class="insights-filters">
+        <div class="container">
+            <div class="filter-buttons" id="filter-buttons">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="Tax">Tax</button>
+                <button class="filter-btn" data-category="Business">Business</button>
+                <button class="filter-btn" data-category="Tech">Tech</button>
+                <button class="filter-btn" data-category="Accounting">Accounting</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Posts Grid -->
+    <section class="insights-posts">
+        <div class="container">
+            <div class="posts-grid" id="posts-grid">
+                <!-- Posts will be loaded here via JavaScript -->
+            </div>
+            <div class="posts-loading" id="posts-loading">
+                <span class="loading-spinner"></span>
+                Loading posts...
+            </div>
+            <div class="posts-empty" id="posts-empty" style="display: none;">
+                <p>No posts found in this category.</p>
+            </div>
+            <div class="posts-error" id="posts-error" style="display: none;">
+                <p>Unable to load posts. Please try again later.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Charles J Barmore CPA PC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // State
+        let currentCategory = 'all';
+        let allPosts = [];
+
+        // DOM Elements
+        const postsGrid = document.getElementById('posts-grid');
+        const postsLoading = document.getElementById('posts-loading');
+        const postsEmpty = document.getElementById('posts-empty');
+        const postsError = document.getElementById('posts-error');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        // Format date to readable string
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+
+        // Create a post card element
+        function createPostCard(post) {
+            const card = document.createElement('article');
+            card.className = 'post-card';
+            card.onclick = () => window.location.href = `post.html?id=${post.id}`;
+
+            const coverHtml = post.cover
+                ? `<div class="post-cover"><img src="${post.cover}" alt="${post.title}" loading="lazy"></div>`
+                : '';
+
+            card.innerHTML = `
+                ${coverHtml}
+                <div class="post-content">
+                    <div class="post-meta">
+                        <span class="post-category">${post.category}</span>
+                        <span class="post-date">${formatDate(post.date)}</span>
+                    </div>
+                    <h2 class="post-title">${post.title}</h2>
+                    ${post.excerpt ? `<p class="post-excerpt">${post.excerpt}</p>` : ''}
+                    <span class="post-read-more">&gt; read_more</span>
+                </div>
+            `;
+
+            return card;
+        }
+
+        // Render posts to the grid
+        function renderPosts(posts) {
+            postsGrid.innerHTML = '';
+            postsLoading.style.display = 'none';
+            postsError.style.display = 'none';
+
+            if (posts.length === 0) {
+                postsEmpty.style.display = 'block';
+                return;
+            }
+
+            postsEmpty.style.display = 'none';
+            posts.forEach(post => {
+                postsGrid.appendChild(createPostCard(post));
+            });
+        }
+
+        // Filter posts by category
+        function filterPosts(category) {
+            currentCategory = category;
+
+            // Update active button
+            filterButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.category === category);
+            });
+
+            // Filter and render
+            if (category === 'all') {
+                renderPosts(allPosts);
+            } else {
+                const filtered = allPosts.filter(post =>
+                    post.category.toLowerCase() === category.toLowerCase()
+                );
+                renderPosts(filtered);
+            }
+        }
+
+        // Fetch posts from API
+        async function fetchPosts() {
+            postsLoading.style.display = 'flex';
+            postsError.style.display = 'none';
+            postsEmpty.style.display = 'none';
+            postsGrid.innerHTML = '';
+
+            try {
+                const response = await fetch('/api/posts');
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch posts');
+                }
+
+                const data = await response.json();
+                allPosts = data.posts || [];
+                renderPosts(allPosts);
+
+            } catch (error) {
+                console.error('Error fetching posts:', error);
+                postsLoading.style.display = 'none';
+                postsError.style.display = 'block';
+            }
+        }
+
+        // Set up filter button click handlers
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterPosts(btn.dataset.category);
+            });
+        });
+
+        // Initial load
+        fetchPosts();
+    </script>
+</body>
+</html>
