@@ -39,6 +39,35 @@ export default async function handler(req, res) {
             });
         }
 
+        // First, get database schema to find the correct property names
+        const schemaResponse = await fetch(`https://api.notion.com/v1/databases/${DATABASE_ID}`, {
+            headers: {
+                'Authorization': `Bearer ${NOTION_TOKEN}`,
+                'Notion-Version': '2022-06-28',
+            },
+        });
+
+        let datePropertyName = null;
+        if (schemaResponse.ok) {
+            const schema = await schemaResponse.json();
+            // Find a date property
+            for (const [name, prop] of Object.entries(schema.properties || {})) {
+                if (prop.type === 'date') {
+                    datePropertyName = name;
+                    break;
+                }
+            }
+        }
+
+        // Build query with optional date sort
+        const queryBody = { filter };
+        if (datePropertyName) {
+            queryBody.sorts = [{ property: datePropertyName, direction: 'descending' }];
+        } else {
+            // Fall back to sorting by created time
+            queryBody.sorts = [{ timestamp: 'created_time', direction: 'descending' }];
+        }
+
         const response = await fetch(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`, {
             method: 'POST',
             headers: {
@@ -46,15 +75,7 @@ export default async function handler(req, res) {
                 'Notion-Version': '2022-06-28',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                filter,
-                sorts: [
-                    {
-                        property: 'Date',
-                        direction: 'descending'
-                    }
-                ]
-            }),
+            body: JSON.stringify(queryBody),
         });
 
         if (!response.ok) {
@@ -81,9 +102,22 @@ export default async function handler(req, res) {
             const categoryProp = properties.Category || properties.category;
             const postCategory = categoryProp?.select?.name || categoryProp?.multi_select?.[0]?.name || 'General';
 
-            // Extract date
-            const dateProp = properties.Date || properties.date || properties['Publication Date'];
-            const date = dateProp?.date?.start || page.created_time.split('T')[0];
+            // Extract date - check various common property names or find any date property
+            let date = page.created_time.split('T')[0];
+            const datePropertyNames = ['Date', 'date', 'Publication Date', 'Publish Date', 'Published', 'Created'];
+            for (const name of datePropertyNames) {
+                if (properties[name]?.date?.start) {
+                    date = properties[name].date.start;
+                    break;
+                }
+            }
+            // Also check for any date type property
+            for (const [name, prop] of Object.entries(properties)) {
+                if (prop.type === 'date' && prop.date?.start) {
+                    date = prop.date.start;
+                    break;
+                }
+            }
 
             // Extract excerpt/description if available
             const excerptProp = properties.Excerpt || properties.Description || properties.Summary;
