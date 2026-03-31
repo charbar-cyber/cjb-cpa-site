@@ -7,7 +7,7 @@
     <meta name="description" content="Learn about Charles Barmore, CPA and CFE, with nearly 10 years of experience in tax, accounting, and advisory services for businesses and individuals.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,15 +16,20 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
                 <img src="assets/logos/cb-angle-brackets.svg" alt="CB Logo" class="logo-img">
-                cbarmore_cpa
+                CBarmore CPA
             </a>
             <div class="nav-links">
-                <a href="about.html">~/about</a>
-                <a href="pricing.html">~/pricing</a>
-                <a href="index.html#services">~/services</a>
-                <a href="insights.html">~/insights</a>
-                <a href="index.html#contact">~/contact</a>
+                <a href="about.html">About</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="index.html#services">Services</a>
+                <a href="insights.html">Insights</a>
+                <a href="index.html#contact">Contact</a>
             </div>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
@@ -33,14 +38,14 @@
         <div class="container">
             <div class="about-hero-grid">
                 <div class="about-hero-content">
-                    <h1 class="about-title">./about_charles</h1>
+                    <span class="section-label">&mdash; ABOUT</span>
+                    <h1 class="about-title">Charlie Barmore</h1>
                     <p class="about-intro">
                         Nearly 10 years of experience in public accounting. A focus on clarity, precision, and trust.
                     </p>
                 </div>
                 <div class="about-photo-container">
                     <div class="about-photo-frame">
-                        <div class="photo-header"></div>
                         <img src="assets/CJB CPA.png" alt="Charles Barmore" class="about-photo">
                         <div class="photo-caption">
                             <span class="caption-name">Charlie Barmore</span>
@@ -66,35 +71,26 @@
                     </p>
                 </div>
                 <div class="credentials-card">
-                    <div class="credentials-header"></div>
-                    <div class="credentials-content">
-                        <div class="credential">
-                            <span class="credential-label">// credentials</span>
-                        </div>
-                        <div class="credential">
-                            <span class="credential-key">license:</span>
-                            <span class="credential-value">CPA</span>
-                        </div>
-                        <div class="credential">
-                            <span class="credential-key">certification:</span>
-                            <span class="credential-value">CFE</span>
-                        </div>
-                        <div class="credential">
-                            <span class="credential-key">education:</span>
-                            <span class="credential-value">BS, MAcc</span>
-                        </div>
-                        <div class="credential">
-                            <span class="credential-key">alma_mater:</span>
-                            <span class="credential-value">"UGA"</span>
-                        </div>
-                        <div class="credential">
-                            <span class="credential-key">experience:</span>
-                            <span class="credential-value">~10 years</span>
-                        </div>
-                        <div class="credential">
-                            <span class="credential-key">location:</span>
-                            <span class="credential-value">"Evans, GA"</span>
-                        </div>
+                    <h3>Credentials</h3>
+                    <div class="credential">
+                        <span class="credential-key">License</span>
+                        <span class="credential-value">CPA</span>
+                    </div>
+                    <div class="credential">
+                        <span class="credential-key">Certification</span>
+                        <span class="credential-value">CFE</span>
+                    </div>
+                    <div class="credential">
+                        <span class="credential-key">Education</span>
+                        <span class="credential-value">BS, MAcc &mdash; UGA</span>
+                    </div>
+                    <div class="credential">
+                        <span class="credential-key">Experience</span>
+                        <span class="credential-value">~10 years</span>
+                    </div>
+                    <div class="credential">
+                        <span class="credential-key">Location</span>
+                        <span class="credential-value">Evans, GA</span>
                     </div>
                 </div>
             </div>
@@ -104,8 +100,9 @@
     <!-- Clients Section -->
     <section class="about-clients">
         <div class="container">
-            <h2 class="section-title">./clients_served</h2>
-            <p class="section-subtitle">Who I work with.</p>
+            <span class="section-label">&mdash; CLIENTS</span>
+            <h2 class="section-heading">Who I Work With</h2>
+            <p class="section-desc">Businesses and individuals who value clarity and precision.</p>
 
             <div class="clients-grid">
                 <div class="client-card">
@@ -213,9 +210,7 @@
                 </div>
 
                 <div class="personal-block">
-                    <div class="personal-header">
-                        <span class="personal-label">// beyond_the_numbers</span>
-                    </div>
+                    <h3>Beyond the Numbers</h3>
                     <div class="personal-content">
                         <p>Outside of work, I'm into fitness and strength training, building and experimenting with technology and systems, and creative projects.</p>
                         <p>I have a strong interest in how modern tools—especially software and automation—can improve both professional services and everyday life.</p>
@@ -233,8 +228,8 @@
                 <h2>Ready to work together?</h2>
                 <p>Whether you need tax planning, compliance work, or financial statement services, I'm here to help.</p>
                 <div class="cta-buttons">
-                    <a href="index.html#contact" class="btn btn-primary">&gt; schedule_consultation()</a>
-                    <a href="index.html#services" class="btn btn-secondary">&gt; view_services</a>
+                    <a href="index.html#contact" class="btn btn-primary">Schedule a Consultation</a>
+                    <a href="index.html#services" class="btn btn-secondary">View Services</a>
                 </div>
             </div>
         </div>
@@ -246,5 +241,22 @@
             <p>&copy; 2026 Charles J Barmore CPA PC. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+            this.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                navToggle.classList.remove('open');
+            });
+        });
+    </script>
 </body>
 </html>

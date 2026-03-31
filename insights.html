@@ -7,7 +7,7 @@
     <meta name="description" content="Tax tips, business insights, and accounting guidance from Charles Barmore CPA. Stay informed with practical advice for businesses and individuals.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,22 +16,28 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
                 <img src="assets/logos/cb-angle-brackets.svg" alt="CB Logo" class="logo-img">
-                cbarmore_cpa
+                CBarmore CPA
             </a>
             <div class="nav-links">
-                <a href="about.html">~/about</a>
-                <a href="pricing.html">~/pricing</a>
-                <a href="index.html#services">~/services</a>
-                <a href="insights.html">~/insights</a>
-                <a href="index.html#contact">~/contact</a>
+                <a href="about.html">About</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="index.html#services">Services</a>
+                <a href="insights.html">Insights</a>
+                <a href="index.html#contact">Contact</a>
             </div>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
     <!-- Insights Hero -->
     <section class="insights-hero">
         <div class="container">
-            <h1 class="insights-title">./insights</h1>
+            <span class="section-label">&mdash; INSIGHTS</span>
+            <h1 class="insights-title">Insights</h1>
             <p class="insights-intro">
                 Practical guidance on tax strategy, business operations, and accounting. No fluff, just useful information.
             </p>
@@ -78,6 +84,22 @@
     </footer>
 
     <script>
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+            this.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                navToggle.classList.remove('open');
+            });
+        });
+
         // State
         let currentCategory = 'all';
         let allPosts = [];
@@ -118,7 +140,7 @@
                     </div>
                     <h2 class="post-title">${post.title}</h2>
                     ${post.excerpt ? `<p class="post-excerpt">${post.excerpt}</p>` : ''}
-                    <span class="post-read-more">&gt; read_more</span>
+                    <span class="post-read-more">Read More &rarr;</span>
                 </div>
             `;
 

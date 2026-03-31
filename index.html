@@ -7,7 +7,7 @@
     <meta name="description" content="Modern accounting infrastructure for forward-thinking businesses. Tax planning, bookkeeping, and business consulting services.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,15 +16,20 @@
         <div class="nav-container">
             <a href="#" class="nav-logo">
                 <img src="assets/logos/cb-angle-brackets.svg" alt="CB Logo" class="logo-img">
-                cbarmore_cpa
+                CBarmore CPA
             </a>
             <div class="nav-links">
-                <a href="about.html">~/about</a>
-                <a href="pricing.html">~/pricing</a>
-                <a href="#services">~/services</a>
-                <a href="insights.html">~/insights</a>
-                <a href="#contact">~/contact</a>
+                <a href="about.html">About</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="#services">Services</a>
+                <a href="insights.html">Insights</a>
+                <a href="#contact">Contact</a>
             </div>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
@@ -32,8 +37,7 @@
     <section class="hero">
         <div class="container">
             <div class="status-badge">
-                <span class="status-dot"></span>
-                Accepting New Clients for 2026
+                Consultations by Referral Only
             </div>
             <h1 class="hero-title">
                 Charles J Barmore <span class="highlight">CPA PC</span>
@@ -42,8 +46,8 @@
                 Modern accounting infrastructure for forward-thinking businesses. Precision, clarity, and compliance in a complex financial landscape.
             </p>
             <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">&gt; schedule_consultation()</a>
-                <a href="#services" class="btn btn-secondary">&gt; learn_more</a>
+                <a href="#contact" class="btn btn-primary">Schedule a Consultation</a>
+                <a href="#services" class="btn btn-secondary">Learn More</a>
             </div>
         </div>
     </section>
@@ -51,8 +55,9 @@
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
-            <h2 class="section-title">./core_services</h2>
-            <p class="section-subtitle">Comprehensive financial solutions.</p>
+            <span class="section-label">&mdash; SERVICES</span>
+            <h2 class="section-heading">Core Services</h2>
+            <p class="section-desc">Comprehensive financial solutions.</p>
 
             <div class="services-grid">
                 <div class="service-card">
@@ -99,51 +104,32 @@
     <!-- Why Choose Section -->
     <section class="why-choose">
         <div class="container">
-            <div class="why-choose-grid">
-                <div class="why-choose-content">
-                    <h2>Why choose a modern CPA?</h2>
+            <span class="section-label">&mdash; WHY US</span>
+            <h2 class="section-heading">Why Choose a Modern CPA?</h2>
 
-                    <div class="feature">
-                        <div class="feature-bar"></div>
-                        <div class="feature-content">
-                            <h3>Digital First</h3>
-                            <p>Secure client portals, electronic signatures, and cloud-based accounting systems mean you can work with us from anywhere.</p>
-                        </div>
-                    </div>
-
-                    <div class="feature">
-                        <div class="feature-bar"></div>
-                        <div class="feature-content">
-                            <h3>Data-Driven</h3>
-                            <p>We don't just record history; we analyze it. Get actionable insights from your financial data.</p>
-                        </div>
-                    </div>
-
-                    <div class="feature">
-                        <div class="feature-bar"></div>
-                        <div class="feature-content">
-                            <h3>Proactive</h3>
-                            <p>No more surprises at tax time. We plan ahead to optimize your financial position.</p>
-                        </div>
+            <div class="why-choose-features">
+                <div class="feature">
+                    <div class="feature-bar"></div>
+                    <div class="feature-content">
+                        <h3>Digital First</h3>
+                        <p>Secure client portals, electronic signatures, and cloud-based accounting systems mean you can work with us from anywhere.</p>
                     </div>
                 </div>
 
-                <div class="code-block">
-                    <div class="code-header"></div>
-                    <pre><code><span class="keyword">class</span> <span class="class-name">FinancialHealth</span> {
-  <span class="function">constructor</span>(<span class="param">client</span>) {
-    <span class="keyword">this</span>.client = client;
-    <span class="keyword">this</span>.goals = [];
-  }
+                <div class="feature">
+                    <div class="feature-bar"></div>
+                    <div class="feature-content">
+                        <h3>Data-Driven</h3>
+                        <p>We don't just record history; we analyze it. Get actionable insights from your financial data.</p>
+                    </div>
+                </div>
 
-  <span class="function">analyze</span>() {
-    <span class="keyword">return</span> {
-      taxLiability: <span class="keyword">this</span>.<span class="function">optimize</span>(),
-      cashFlow: <span class="keyword">this</span>.<span class="function">forecast</span>(),
-      growth: <span class="keyword">this</span>.<span class="function">plan</span>()
-    };
-  }
-}</code></pre>
+                <div class="feature">
+                    <div class="feature-bar"></div>
+                    <div class="feature-content">
+                        <h3>Proactive</h3>
+                        <p>No more surprises at tax time. We plan ahead to optimize your financial position.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -152,7 +138,9 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title centered">./initiate_contact</h2>
+            <span class="section-label centered">&mdash; GET IN TOUCH</span>
+            <h2 class="section-heading centered">Let's Work Together</h2>
+            <p class="section-desc centered">Ready to get started? Send a message and I'll follow up within one business day.</p>
 
             <div class="contact-card">
                 <div class="contact-info">
@@ -220,6 +208,23 @@
     </footer>
 
     <script>
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+            this.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                navToggle.classList.remove('open');
+            });
+        });
+
+        // Contact form
         document.getElementById('contact-form').addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -231,7 +236,6 @@
             const service = document.getElementById('service').value;
             const message = document.getElementById('message').value;
 
-            // Update button state
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
             formStatus.textContent = '';

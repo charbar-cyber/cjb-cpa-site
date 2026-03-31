@@ -7,7 +7,7 @@
     <meta name="description" content="Transparent pricing for tax preparation and planning services. Individual and business tax packages tailored to your needs.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,24 +16,30 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
                 <img src="assets/logos/cb-angle-brackets.svg" alt="CB Logo" class="logo-img">
-                cbarmore_cpa
+                CBarmore CPA
             </a>
             <div class="nav-links">
-                <a href="about.html">~/about</a>
-                <a href="pricing.html">~/pricing</a>
-                <a href="index.html#services">~/services</a>
-                <a href="insights.html">~/insights</a>
-                <a href="index.html#contact">~/contact</a>
+                <a href="about.html">About</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="index.html#services">Services</a>
+                <a href="insights.html">Insights</a>
+                <a href="index.html#contact">Contact</a>
             </div>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
     <!-- Pricing Hero -->
     <section class="pricing-hero">
         <div class="container">
-            <h1 class="pricing-title">./pricing</h1>
+            <span class="section-label">&mdash; PRICING</span>
+            <h1 class="pricing-title">Transparent Pricing</h1>
             <p class="pricing-intro">
-                Transparent, straightforward pricing. No hidden fees, no surprises.
+                Straightforward pricing with no hidden fees and no surprises.
             </p>
         </div>
     </section>
@@ -41,8 +47,9 @@
     <!-- Individual Pricing -->
     <section class="pricing-section">
         <div class="container">
-            <h2 class="section-title">// individual_tax</h2>
-            <p class="section-subtitle">Tax preparation for individuals and families.</p>
+            <span class="section-label">&mdash; INDIVIDUALS</span>
+            <h2 class="section-heading">Individual Tax</h2>
+            <p class="section-desc">Tax preparation for individuals and families.</p>
 
             <div class="pricing-grid">
                 <div class="pricing-card">
@@ -55,13 +62,13 @@
                         <span class="price-period">per return</span>
                     </div>
                     <ul class="pricing-features">
-                        <li><span class="check">✓</span> W-2 wage income</li>
-                        <li><span class="check">✓</span> Interest & dividends</li>
-                        <li><span class="check">✓</span> Standard deduction</li>
-                        <li><span class="check">✓</span> Tax credits review</li>
-                        <li><span class="check">✓</span> E-file federal & state</li>
+                        <li><span class="check">&check;</span> W-2 wage income</li>
+                        <li><span class="check">&check;</span> Interest & dividends</li>
+                        <li><span class="check">&check;</span> Standard deduction</li>
+                        <li><span class="check">&check;</span> Tax credits review</li>
+                        <li><span class="check">&check;</span> E-file federal & state</li>
                     </ul>
-                    <a href="index.html#contact" class="btn btn-secondary pricing-btn">&gt; get_started</a>
+                    <a href="index.html#contact" class="btn btn-secondary pricing-btn">Get Started</a>
                 </div>
 
                 <div class="pricing-card featured">
@@ -75,14 +82,14 @@
                         <span class="price-period">per return</span>
                     </div>
                     <ul class="pricing-features">
-                        <li><span class="check">✓</span> Everything in Simple</li>
-                        <li><span class="check">✓</span> Itemized deductions</li>
-                        <li><span class="check">✓</span> Investment income</li>
-                        <li><span class="check">✓</span> Stock sales (1099-B)</li>
-                        <li><span class="check">✓</span> HSA contributions</li>
-                        <li><span class="check">✓</span> Tax planning notes</li>
+                        <li><span class="check">&check;</span> Everything in Simple</li>
+                        <li><span class="check">&check;</span> Itemized deductions</li>
+                        <li><span class="check">&check;</span> Investment income</li>
+                        <li><span class="check">&check;</span> Stock sales (1099-B)</li>
+                        <li><span class="check">&check;</span> HSA contributions</li>
+                        <li><span class="check">&check;</span> Tax planning notes</li>
                     </ul>
-                    <a href="index.html#contact" class="btn btn-primary pricing-btn">&gt; get_started</a>
+                    <a href="index.html#contact" class="btn btn-primary pricing-btn">Get Started</a>
                 </div>
 
                 <div class="pricing-card">
@@ -95,14 +102,14 @@
                         <span class="price-period">starting at</span>
                     </div>
                     <ul class="pricing-features">
-                        <li><span class="check">✓</span> Everything in Standard</li>
-                        <li><span class="check">✓</span> Rental property income</li>
-                        <li><span class="check">✓</span> K-1 partnership income</li>
-                        <li><span class="check">✓</span> Multi-state filing</li>
-                        <li><span class="check">✓</span> Self-employment income</li>
-                        <li><span class="check">✓</span> Estimated tax planning</li>
+                        <li><span class="check">&check;</span> Everything in Standard</li>
+                        <li><span class="check">&check;</span> Rental property income</li>
+                        <li><span class="check">&check;</span> K-1 partnership income</li>
+                        <li><span class="check">&check;</span> Multi-state filing</li>
+                        <li><span class="check">&check;</span> Self-employment income</li>
+                        <li><span class="check">&check;</span> Estimated tax planning</li>
                     </ul>
-                    <a href="index.html#contact" class="btn btn-secondary pricing-btn">&gt; get_started</a>
+                    <a href="index.html#contact" class="btn btn-secondary pricing-btn">Get Started</a>
                 </div>
             </div>
         </div>
@@ -111,8 +118,9 @@
     <!-- Business Pricing -->
     <section class="pricing-section alt-bg">
         <div class="container">
-            <h2 class="section-title">// business_tax</h2>
-            <p class="section-subtitle">Tax preparation and planning for businesses.</p>
+            <span class="section-label">&mdash; BUSINESSES</span>
+            <h2 class="section-heading">Business Tax</h2>
+            <p class="section-desc">Tax preparation and planning for businesses.</p>
 
             <div class="pricing-grid">
                 <div class="pricing-card">
@@ -125,13 +133,13 @@
                         <span class="price-period">per return</span>
                     </div>
                     <ul class="pricing-features">
-                        <li><span class="check">✓</span> Schedule C preparation</li>
-                        <li><span class="check">✓</span> Business deductions</li>
-                        <li><span class="check">✓</span> Home office deduction</li>
-                        <li><span class="check">✓</span> Quarterly tax estimates</li>
-                        <li><span class="check">✓</span> Included with personal return</li>
+                        <li><span class="check">&check;</span> Schedule C preparation</li>
+                        <li><span class="check">&check;</span> Business deductions</li>
+                        <li><span class="check">&check;</span> Home office deduction</li>
+                        <li><span class="check">&check;</span> Quarterly tax estimates</li>
+                        <li><span class="check">&check;</span> Included with personal return</li>
                     </ul>
-                    <a href="index.html#contact" class="btn btn-secondary pricing-btn">&gt; get_started</a>
+                    <a href="index.html#contact" class="btn btn-secondary pricing-btn">Get Started</a>
                 </div>
 
                 <div class="pricing-card featured">
@@ -145,14 +153,14 @@
                         <span class="price-period">starting at</span>
                     </div>
                     <ul class="pricing-features">
-                        <li><span class="check">✓</span> Form 1120-S preparation</li>
-                        <li><span class="check">✓</span> K-1 preparation</li>
-                        <li><span class="check">✓</span> Reasonable compensation review</li>
-                        <li><span class="check">✓</span> Quarterly tax estimates</li>
-                        <li><span class="check">✓</span> Year-end tax planning</li>
-                        <li><span class="check">✓</span> State filing included</li>
+                        <li><span class="check">&check;</span> Form 1120-S preparation</li>
+                        <li><span class="check">&check;</span> K-1 preparation</li>
+                        <li><span class="check">&check;</span> Reasonable compensation review</li>
+                        <li><span class="check">&check;</span> Quarterly tax estimates</li>
+                        <li><span class="check">&check;</span> Year-end tax planning</li>
+                        <li><span class="check">&check;</span> State filing included</li>
                     </ul>
-                    <a href="index.html#contact" class="btn btn-primary pricing-btn">&gt; get_started</a>
+                    <a href="index.html#contact" class="btn btn-primary pricing-btn">Get Started</a>
                 </div>
 
                 <div class="pricing-card">
@@ -165,14 +173,14 @@
                         <span class="price-period">starting at</span>
                     </div>
                     <ul class="pricing-features">
-                        <li><span class="check">✓</span> Form 1065 preparation</li>
-                        <li><span class="check">✓</span> K-1s for all partners</li>
-                        <li><span class="check">✓</span> Capital account tracking</li>
-                        <li><span class="check">✓</span> Guaranteed payments</li>
-                        <li><span class="check">✓</span> Multi-state allocation</li>
-                        <li><span class="check">✓</span> Year-end tax planning</li>
+                        <li><span class="check">&check;</span> Form 1065 preparation</li>
+                        <li><span class="check">&check;</span> K-1s for all partners</li>
+                        <li><span class="check">&check;</span> Capital account tracking</li>
+                        <li><span class="check">&check;</span> Guaranteed payments</li>
+                        <li><span class="check">&check;</span> Multi-state allocation</li>
+                        <li><span class="check">&check;</span> Year-end tax planning</li>
                     </ul>
-                    <a href="index.html#contact" class="btn btn-secondary pricing-btn">&gt; get_started</a>
+                    <a href="index.html#contact" class="btn btn-secondary pricing-btn">Get Started</a>
                 </div>
             </div>
         </div>
@@ -181,8 +189,9 @@
     <!-- Add-ons -->
     <section class="pricing-section">
         <div class="container">
-            <h2 class="section-title">// add_ons</h2>
-            <p class="section-subtitle">Additional services to complement your tax return.</p>
+            <span class="section-label">&mdash; EXTRAS</span>
+            <h2 class="section-heading">Add-Ons</h2>
+            <p class="section-desc">Additional services to complement your tax return.</p>
 
             <div class="addons-grid">
                 <div class="addon-card">
@@ -215,7 +224,7 @@
             <div class="cta-card">
                 <h2>Not sure which package fits?</h2>
                 <p>Every situation is different. Reach out and I'll help you find the right solution.</p>
-                <a href="index.html#contact" class="btn btn-primary">&gt; schedule_consultation()</a>
+                <a href="index.html#contact" class="btn btn-primary">Schedule a Consultation</a>
             </div>
         </div>
     </section>
@@ -226,5 +235,22 @@
             <p>&copy; 2026 Charles J Barmore CPA PC. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+            this.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                navToggle.classList.remove('open');
+            });
+        });
+    </script>
 </body>
 </html>
