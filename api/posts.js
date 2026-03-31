@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     }
 
     const NOTION_TOKEN = process.env.NOTION_TOKEN;
-    const DATABASE_ID = '42c2a933-7181-4ae6-88d6-b52527ad934e';
+    const DATABASE_ID = '14dd37ae-8683-4a5c-a60b-83dbbf5e35ca';
 
     if (!NOTION_TOKEN) {
         return res.status(500).json({ error: 'Notion token not configured', hint: 'Add NOTION_TOKEN to Vercel environment variables' });
