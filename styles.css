@@ -150,6 +150,13 @@ a {
     letter-spacing: 0.5px;
 }
 
+.hero-availability {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    line-height: 1.6;
+}
+
 .hero-title {
     font-size: clamp(40px, 8vw, 72px);
     font-weight: 700;
@@ -292,6 +299,49 @@ a {
     font-size: 15px;
     color: var(--text-secondary);
     line-height: 1.7;
+}
+
+/* Home About Section */
+.home-about {
+    padding: 100px 0;
+    background-color: var(--bg-secondary);
+}
+
+.home-about-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.home-about-photo {
+    display: flex;
+    justify-content: center;
+}
+
+.home-about-text {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 24px;
+}
+
+.home-about-credentials {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+
+.credential-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background-color: rgba(232, 90, 44, 0.1);
+    border: 1px solid rgba(232, 90, 44, 0.3);
+    border-radius: 20px;
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 500;
 }
 
 /* Why Choose Section */
@@ -1009,6 +1059,32 @@ a {
 
     .services-grid {
         grid-template-columns: 1fr;
+    }
+
+    .home-about {
+        padding: 60px 0;
+    }
+
+    .home-about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .home-about-photo {
+        justify-content: center;
+    }
+
+    .home-about-photo .about-photo-frame {
+        width: 220px;
+    }
+
+    .home-about-credentials {
+        justify-content: center;
+    }
+
+    .home-about-content .btn {
+        width: auto;
     }
 
     .why-choose {
