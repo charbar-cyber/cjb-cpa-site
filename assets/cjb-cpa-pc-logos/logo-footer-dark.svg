@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" width="260" height="80">
+  <defs>
+    <linearGradient id="ftBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F06A3E"/>
+      <stop offset="100%" stop-color="#E85A2C"/>
+    </linearGradient>
+  </defs>
+  <!-- CB Mark -->
+  <rect x="0" y="8" width="44" height="44" rx="9" fill="url(#ftBg)"/>
+  <text x="22" y="38" text-anchor="middle" font-family="'Satoshi', 'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="25" fill="#FFFFFF" letter-spacing="-0.7">CB</text>
+  <!-- Barmore CPA -->
+  <text x="58" y="28" font-family="'Satoshi', 'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="20" fill="#E8E8EC" letter-spacing="-0.4">Barmore CPA</text>
+  <!-- Company Info -->
+  <text x="58" y="46" font-family="'General Sans', 'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="11" fill="#94949E">Charles J Barmore CPA PC</text>
+  <!-- Location -->
+  <text x="58" y="62" font-family="'General Sans', 'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="11" fill="#64646E">Evans, GA</text>
+</svg>

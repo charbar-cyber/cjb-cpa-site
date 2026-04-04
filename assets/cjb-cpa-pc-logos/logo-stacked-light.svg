@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 140" width="220" height="140">
+  <defs>
+    <linearGradient id="sMBgL" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F06A3E"/>
+      <stop offset="100%" stop-color="#E85A2C"/>
+    </linearGradient>
+  </defs>
+  <!-- CB Mark centered -->
+  <rect x="78" y="0" width="64" height="64" rx="12" fill="url(#sMBgL)"/>
+  <text x="110" y="44" text-anchor="middle" font-family="'Satoshi', 'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="36" fill="#FFFFFF" letter-spacing="-1">CB</text>
+  <!-- Barmore CPA (dark text for light backgrounds) -->
+  <text x="110" y="98" text-anchor="middle" font-family="'Satoshi', 'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="30" fill="#1A1A1F" letter-spacing="-0.5">Barmore CPA</text>
+  <!-- MODERN ACCOUNTING -->
+  <text x="110" y="122" text-anchor="middle" font-family="'General Sans', 'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="12" fill="#64646E" letter-spacing="2.5">MODERN ACCOUNTING</text>
+</svg>

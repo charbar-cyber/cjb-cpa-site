@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 56" width="280" height="56">
+  <defs>
+    <linearGradient id="hMarkBgL" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F06A3E"/>
+      <stop offset="100%" stop-color="#E85A2C"/>
+    </linearGradient>
+  </defs>
+  <!-- CB Mark -->
+  <rect x="0" y="2" width="52" height="52" rx="10" fill="url(#hMarkBgL)"/>
+  <text x="26" y="37" text-anchor="middle" font-family="'Satoshi', 'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="29" fill="#FFFFFF" letter-spacing="-0.8">CB</text>
+  <!-- Barmore CPA text (dark for light backgrounds) -->
+  <text x="68" y="38" font-family="'Satoshi', 'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="28" fill="#1A1A1F" letter-spacing="-0.5">Barmore CPA</text>
+</svg>
