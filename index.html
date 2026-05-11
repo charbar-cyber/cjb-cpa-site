@@ -1,301 +1,871 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charles J Barmore CPA PC | Modern Tax & Accounting</title>
-    <meta name="description" content="Tax, accounting, and advisory services for businesses and individuals. Precision, clarity, and proactive guidance from Charles J Barmore CPA PC.">
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CBarmore CPA — Charlie Barmore, CPA, CFE</title>
+<meta name="description" content="Tax and forensic accounting. Charlie Barmore, CPA, CFE." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --bg-alt: #F1EFE9;
+    --card: #FFFFFF;
+    --border: #E2DED6;
+    --accent: #B85439;
+    --accent-hover: #A04830;
+    --text-1: #1A1816;
+    --text-2: #5C5750;
+    --text-3: #97928A;
+
+    --font-sans: 'IBM Plex Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+    --max-width: 1280px;
+    --gutter: 80px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text-1);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250, 250, 247, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-1);
+    text-decoration: none;
+    height: 36px;
+  }
+  .logo-svg { height: 36px; width: auto; display: block; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--text-2);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--text-1); }
+  .nav-links a.btn-accent,
+  .nav-links a.btn-accent:hover { color: #FFFFFF; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 20px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-accent {
+    background: var(--accent);
+    color: #FFFFFF;
+  }
+  .btn-accent:hover { background: var(--accent-hover); }
+  .btn-outline {
+    background: transparent;
+    color: var(--text-1);
+    border: 1px solid var(--border);
+  }
+  .btn-outline:hover { border-color: var(--text-3); }
+  .btn .arrow { transition: transform 0.2s ease; }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 100px 0 80px;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    padding: 6px 16px;
+    background: rgba(184, 84, 57, 0.08);
+    border-radius: 100px;
+  }
+  .hero-tag .dot {
+    width: 7px;
+    height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+  h1 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(40px, 5.5vw, 64px);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    max-width: 800px;
+    margin-bottom: 28px;
+    color: var(--text-1);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--text-2);
+    max-width: 680px;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* ── Section shared ── */
+  .section {
+    padding: 80px 0;
+    border-top: 1px solid var(--border);
+  }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--text-3);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(28px, 3.5vw, 40px);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    margin-bottom: 20px;
+  }
+
+  /* ── Services ── */
+  .services-list {
+    margin-top: 48px;
+    border-top: 1px solid var(--border);
+  }
+  .service-row {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    gap: 32px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .service-num {
+    font-family: var(--font-mono);
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--text-3);
+    letter-spacing: 0.02em;
+    padding-top: 2px;
+  }
+  .service-row h3 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .service-row p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-2);
+    font-weight: 300;
+    max-width: 680px;
+  }
+  .soon-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    background: rgba(184, 84, 57, 0.08);
+    border: 1px solid rgba(184, 84, 57, 0.22);
+    padding: 2px 9px;
+    border-radius: 100px;
+    margin-left: 10px;
+    vertical-align: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── How I Work ── */
+  .how-section {
+    padding: 80px 0;
+    border-top: 1px solid var(--border);
+    background: var(--bg-alt);
+  }
+  .how-intro {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-2);
+    font-weight: 300;
+    max-width: 600px;
+    margin-bottom: 48px;
+  }
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  .how-item {
+    padding-left: 16px;
+    border-left: 2px solid var(--accent);
+  }
+  .how-item h4 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .how-item p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-2);
+    font-weight: 300;
+  }
+
+  /* ── About ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .about-photo-col {}
+  .about-photo {
+    width: 260px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    display: block;
+  }
+  .about-photo-card {
+    margin-top: -1px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0 0 8px 8px;
+    padding: 12px 16px;
+  }
+  .about-photo-card .name {
+    font-weight: 500;
+    font-size: 14px;
+  }
+  .about-photo-card .creds {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-3);
+    letter-spacing: 0.06em;
+    margin-top: 2px;
+  }
+
+  .about-content { padding-top: 8px; }
+  .about-name {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .about-badges {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .about-badges span {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    padding: 5px 14px;
+    border: 1px solid rgba(184, 84, 57, 0.25);
+    border-radius: 100px;
+    background: rgba(184, 84, 57, 0.06);
+  }
+  .about-body {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text-2);
+    font-weight: 300;
+    margin-bottom: 16px;
+    max-width: 560px;
+  }
+  .about-links {
+    display: flex;
+    gap: 36px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .about-link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .about-link svg {
+    width: 26px;
+    height: 26px;
+    fill: currentColor;
+  }
+  .about-link:hover { color: var(--accent-hover); }
+
+  /* ── Contact ── */
+  .contact {
+    padding: 96px 0;
+    border-top: 1px solid var(--border);
+    background: var(--bg-alt);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .contact-intro {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-2);
+    font-weight: 300;
+    margin-top: 16px;
+    margin-bottom: 32px;
+    max-width: 420px;
+  }
+  .contact-direct {
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-2);
+    font-weight: 300;
+  }
+  .contact-direct a {
+    display: block;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  .contact-direct a:hover { color: var(--accent-hover); }
+
+  .contact-form {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    display: grid;
+    gap: 18px;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .form-field { display: flex; flex-direction: column; gap: 6px; }
+  .form-field > span {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-1);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    transition: border-color 0.2s ease;
+  }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .form-field textarea { resize: vertical; min-height: 120px; }
+  .form-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    background: var(--accent);
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    justify-self: start;
+  }
+  .form-submit:hover:not([disabled]) { background: var(--accent-hover); }
+  .form-submit[disabled] { opacity: 0.6; cursor: not-allowed; }
+  .form-status {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    margin: 0;
+    min-height: 16px;
+  }
+  .form-status.success { color: #2D7D4D; }
+  .form-status.error { color: var(--accent); }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 56px 0 28px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  .footer-brand .logo { margin-bottom: 12px; display: inline-block; }
+  .footer-brand p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text-3);
+    font-weight: 300;
+    max-width: 300px;
+  }
+  .footer-col h4 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--text-3);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 8px; }
+  .footer-col a {
+    color: var(--text-2);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--accent); }
+  .footer-bottom {
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .footer-disclosure {
+    font-size: 11px;
+    color: var(--text-3);
+    line-height: 1.6;
+    max-width: 600px;
+  }
+  .footer-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-3);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 960px) {
+    :root { --gutter: 24px; }
+    .hero { padding: 64px 0 56px; }
+    .service-row { grid-template-columns: 56px 1fr; gap: 20px; }
+    .service-num { font-size: 20px; }
+    .how-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .about-photo { width: 220px; height: 270px; }
+    .about-photo-card { width: 220px; }
+    .contact { padding: 56px 0; }
+    .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .nav-links { display: none; }
+    .how-section, .section { padding: 56px 0; }
+  }
+  @media (max-width: 560px) {
+    .how-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">
-                <img src="assets/cjb-cpa-pc-logos/logo-header-dark.svg" alt="CBarmore CPA" class="logo-img">
-            </a>
-            <div class="nav-links">
-                <a href="/about">About</a>
-                <a href="/pricing">Pricing</a>
-                <a href="#services">Services</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <button class="nav-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="/" class="logo" aria-label="CBarmore CPA home">
+      <svg class="logo-svg" viewBox="0 0 220 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="cbGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C25E40"/><stop offset="100%" stop-color="#A04830"/></linearGradient></defs>
+        <rect x="0" y="2" width="40" height="40" rx="8" fill="url(#cbGrad)"/>
+        <text x="20" y="30" text-anchor="middle" font-family="'IBM Plex Sans', sans-serif" font-weight="600" font-size="20" fill="#FFFFFF" letter-spacing="-0.4">CB</text>
+        <text x="50" y="30" font-family="'IBM Plex Sans', sans-serif" font-weight="600" font-size="20" fill="#1A1816" letter-spacing="-0.4">CBarmore CPA</text>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li><a href="#how">How I work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="btn btn-accent">Get in touch</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-tag">
+      <span class="dot"></span>
+      <span>Accepting new clients</span>
+    </div>
+    <h1>Your CPA, your CFO, and your fraud examiner.</h1>
+    <p class="hero-sub">
+      I'm Charlie Barmore. From clean books and tax filings to fractional CFO work and forensic engagements, I take on a small roster of businesses, operators, and the attorneys who refer them.
+    </p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-accent">Inquire about working together <span class="arrow">&rarr;</span></a>
+      <a href="#services" class="btn btn-outline">Learn more</a>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-label">Services</div>
+    <h2 class="section-title">What I do.</h2>
+
+    <div class="services-list">
+      <div class="service-row">
+        <div class="service-num">01</div>
+        <div>
+          <h3>Bookkeeping &amp; tax</h3>
+          <p>The foundation. Clean books, timely filings, and proactive compliance &mdash; not a year-end scramble. Tax planning and preparation for businesses, S-corps, partnerships, and individuals.</p>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="status-badge">
-                Consultations by Referral Only
-            </div>
-            <p class="hero-availability">Limited availability &mdash; I work with a select number of clients to ensure dedicated attention.</p>
-            <h1 class="hero-title">
-                Charles J Barmore <span class="highlight">CPA PC</span>
-            </h1>
-            <p class="hero-subtitle">
-                Tax, accounting, and advisory services for businesses and individuals who value precision, clarity, and proactive guidance.
-            </p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">Schedule a Consultation</a>
-                <a href="#services" class="btn btn-secondary">Learn More</a>
-            </div>
+      </div>
+      <div class="service-row">
+        <div class="service-num">02</div>
+        <div>
+          <h3>Advisory &amp; planning</h3>
+          <p>Entity structuring, tax strategy, equity comp, and the questions that cost money if you miss them. Decisions backed by real numbers.</p>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <span class="section-label">&mdash; SERVICES</span>
-            <h2 class="section-heading">Core Services</h2>
-            <p class="section-desc">Comprehensive financial solutions.</p>
-
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14 2 14 8 20 8"></polyline>
-                            <line x1="16" y1="13" x2="8" y2="13"></line>
-                            <line x1="16" y1="17" x2="8" y2="17"></line>
-                            <polyline points="10 9 9 9 8 9"></polyline>
-                        </svg>
-                    </div>
-                    <h3>Tax Planning & Compliance</h3>
-                    <p>Strategic tax planning and preparation for individuals and businesses. Minimizing liability while ensuring full compliance.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="18" y1="20" x2="18" y2="10"></line>
-                            <line x1="12" y1="20" x2="12" y2="4"></line>
-                            <line x1="6" y1="20" x2="6" y2="14"></line>
-                        </svg>
-                    </div>
-                    <h3>Accounting & Bookkeeping</h3>
-                    <p>Full-service accounting, financial statement preparation, and real-time bookkeeping solutions.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                            <line x1="8" y1="21" x2="16" y2="21"></line>
-                            <line x1="12" y1="17" x2="12" y2="21"></line>
-                        </svg>
-                    </div>
-                    <h3>Business Consulting</h3>
-                    <p>Entity selection, business formation, and financial consulting to help your business grow sustainably.</p>
-                </div>
-            </div>
+      </div>
+      <div class="service-row">
+        <div class="service-num">03</div>
+        <div>
+          <h3>Fractional CFO</h3>
+          <p>Cash flow forecasting, KPI dashboards, and board-ready reporting &mdash; without a full-time hire.</p>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="home-about">
-        <div class="container">
-            <div class="home-about-grid">
-                <div class="home-about-photo">
-                    <div class="about-photo-frame">
-                        <img src="assets/CJB CPA.png" alt="Charlie Barmore, CPA" class="about-photo">
-                        <div class="photo-caption">
-                            <span class="caption-name">Charlie Barmore</span>
-                            <span class="caption-credentials">CPA, CFE</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="home-about-content">
-                    <span class="section-label">&mdash; ABOUT</span>
-                    <h2 class="section-heading">Who You'll Be Working With</h2>
-                    <p class="home-about-text">I'm Charlie Barmore &mdash; a CPA and Certified Fraud Examiner with over a decade in public accounting. I work directly with every client, combining deep technical knowledge with a straightforward approach. No layers, no hand-offs, no surprises.</p>
-                    <div class="home-about-credentials">
-                        <span class="credential-tag">CPA Licensed</span>
-                        <span class="credential-tag">Certified Fraud Examiner</span>
-                        <span class="credential-tag">BS &amp; MAcc &mdash; UGA</span>
-                    </div>
-                    <a href="/about" class="btn btn-secondary">More About Me</a>
-                </div>
-            </div>
+      </div>
+      <div class="service-row">
+        <div class="service-num">04</div>
+        <div>
+          <h3>Forensic &amp; fraud</h3>
+          <p>Fraud examinations, internal investigations, expert witness engagements, economic damages calculations, and fund tracing. Work attorneys bring me when they need an accountant who can explain what happened clearly.</p>
         </div>
-    </section>
-
-    <!-- Why Choose Section -->
-    <section class="why-choose">
-        <div class="container">
-            <span class="section-label">&mdash; WHY US</span>
-            <h2 class="section-heading">Why Choose a Modern CPA?</h2>
-
-            <div class="why-choose-features">
-                <div class="feature">
-                    <div class="feature-bar"></div>
-                    <div class="feature-content">
-                        <h3>Digital First</h3>
-                        <p>Secure client portals, electronic signatures, and cloud-based accounting systems mean you can work with us from anywhere.</p>
-                    </div>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-bar"></div>
-                    <div class="feature-content">
-                        <h3>Data-Driven</h3>
-                        <p>We don't just record history; we analyze it. Get actionable insights from your financial data.</p>
-                    </div>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-bar"></div>
-                    <div class="feature-content">
-                        <h3>Proactive</h3>
-                        <p>No more surprises at tax time. We plan ahead to optimize your financial position.</p>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="service-row">
+        <div class="service-num">05</div>
+        <div>
+          <h3>Business valuation <span class="soon-tag">Soon</span></h3>
+          <p>I'm pursuing the Certified Valuation Analyst (CVA) credential. Independent valuations for buy/sell transactions, gift and estate planning, and litigation support are coming once it's in hand &mdash; reach out if you'd like to be on the early list.</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <span class="section-label centered">&mdash; GET IN TOUCH</span>
-            <h2 class="section-heading centered">Let's Work Together</h2>
-            <p class="section-desc centered">Ready to get started? Send a message and I'll follow up within one business day.</p>
+<section class="how-section" id="how">
+  <div class="container">
+    <div class="section-label">How I work</div>
+    <h2 class="section-title">You work with me. Not a team.</h2>
+    <p class="how-intro">
+      I limit the number of clients and engagements I take on each year. That way, every client gets my full attention &mdash; from kickoff through delivery, with no handoffs in between.
+    </p>
 
-            <div class="contact-card">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                        <a href="mailto:charlie@cbarmorecpa.com">charlie@cbarmorecpa.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="10" r="3"></circle>
-                            <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"></path>
-                        </svg>
-                        <span>Available remotely & in-person</span>
-                    </div>
-                </div>
+    <div class="how-grid">
+      <div class="how-item">
+        <h4>Direct access</h4>
+        <p>I do the work, review the work, and sign the work. Start to finish, you're working with me.</p>
+      </div>
+      <div class="how-item">
+        <h4>Modern tools</h4>
+        <p>I use current technology &mdash; including AI &mdash; to do better work, faster. The judgment is still mine.</p>
+      </div>
+      <div class="how-item">
+        <h4>Clear pricing</h4>
+        <p>Flat fees where the scope is clear. Hourly where it isn't. Discussed upfront.</p>
+      </div>
+      <div class="how-item">
+        <h4>Responsive</h4>
+        <p>Same-day responses. Status updates without having to ask.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-                <div class="contact-form-container">
-                    <p class="form-label">Send us a message to get started:</p>
-                    <form class="contact-form" id="contact-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="firstName">First Name</label>
-                                <input type="text" name="firstName" id="firstName" placeholder="John" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="lastName">Last Name</label>
-                                <input type="text" name="lastName" id="lastName" placeholder="Smith" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" name="email" id="email" placeholder="you@example.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="service">What service are you interested in?</label>
-                            <select name="service" id="service" required>
-                                <option value="" disabled selected>Select a service...</option>
-                                <option value="tax-planning">Tax Planning & Compliance</option>
-                                <option value="bookkeeping">Accounting & Bookkeeping</option>
-                                <option value="consulting">Business Consulting</option>
-                                <option value="multiple">Multiple Services</option>
-                                <option value="not-sure">Not Sure Yet</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Tell us about your situation</label>
-                            <textarea name="message" id="message" placeholder="Briefly describe your business, current challenges, and what you're looking for help with..." rows="6" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-submit" id="submit-btn">Submit Request</button>
-                        <p class="form-status" id="form-status"></p>
-                    </form>
-                </div>
-            </div>
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-label">About</div>
+    <div class="about-grid">
+      <div class="about-photo-col">
+        <img class="about-photo" src="/assets/charlie-barmore.png" alt="Charlie Barmore" />
+        <div class="about-photo-card">
+          <div class="name">Charlie Barmore</div>
+          <div class="creds">CPA &middot; CFE</div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Charles J Barmore CPA PC. All rights reserved.</p>
+      </div>
+      <div class="about-content">
+        <h2 class="about-name">Charlie Barmore</h2>
+        <div class="about-badges">
+          <span>CPA</span>
+          <span>CFE</span>
         </div>
-    </footer>
+        <p class="about-body">
+          Master of Accounting from the University of Georgia. A decade in public accounting across tax, advisory, and financial planning for founders and operators.
+        </p>
+        <p class="about-body">
+          I started my firm to do accounting, advisory, and forensic work the way I think it should be done &mdash; directly, with good tools, and with a client roster small enough that no one gets passed around.
+        </p>
+        <div class="about-links">
+          <a class="about-link" href="https://www.linkedin.com/in/cbarmorecpa/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+            </svg>
+            LinkedIn
+          </a>
+          <a class="about-link" href="https://x.com/The_Ai_CPA" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/>
+            </svg>
+            @The_Ai_CPA
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Mobile nav toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Let's talk through what you need.</h2>
+        <p class="contact-intro">
+          Send a short note about what you're working on and I'll follow up within one business day. I take on a limited number of new engagements each year, so the earlier the conversation starts, the better.
+        </p>
+        <div class="contact-direct">
+          <a href="mailto:charlie@cbarmorecpa.com">charlie@cbarmorecpa.com</a>
+          Available remotely and in-person.
+        </div>
+      </div>
 
-        navToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('open');
-            this.classList.toggle('open');
-        });
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="form-row">
+          <label class="form-field">
+            <span>First name</span>
+            <input type="text" name="firstName" id="firstName" required>
+          </label>
+          <label class="form-field">
+            <span>Last name</span>
+            <input type="text" name="lastName" id="lastName" required>
+          </label>
+        </div>
+        <label class="form-field">
+          <span>Email</span>
+          <input type="email" name="email" id="email" required>
+        </label>
+        <label class="form-field">
+          <span>What can I help with?</span>
+          <select name="service" id="service" required>
+            <option value="" disabled selected>Select a service&hellip;</option>
+            <option value="bookkeeping-tax">Bookkeeping &amp; tax</option>
+            <option value="advisory-planning">Advisory &amp; planning</option>
+            <option value="fractional-cfo">Fractional CFO</option>
+            <option value="forensic">Forensic &amp; fraud</option>
+            <option value="valuation">Business valuation (notify me)</option>
+            <option value="multiple">Multiple services</option>
+            <option value="not-sure">Not sure yet</option>
+          </select>
+        </label>
+        <label class="form-field">
+          <span>Tell me about your situation</span>
+          <textarea name="message" id="message" rows="5" required></textarea>
+        </label>
+        <button type="submit" class="form-submit" id="submit-btn">
+          Send message <span class="arrow">&rarr;</span>
+        </button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
 
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('open');
-                navToggle.classList.remove('open');
-            });
-        });
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo" aria-label="CBarmore CPA home">
+          <svg class="logo-svg" viewBox="0 0 220 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs><linearGradient id="cbGradFooter" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C25E40"/><stop offset="100%" stop-color="#A04830"/></linearGradient></defs>
+            <rect x="0" y="2" width="40" height="40" rx="8" fill="url(#cbGradFooter)"/>
+            <text x="20" y="30" text-anchor="middle" font-family="'IBM Plex Sans', sans-serif" font-weight="600" font-size="20" fill="#FFFFFF" letter-spacing="-0.4">CB</text>
+            <text x="50" y="30" font-family="'IBM Plex Sans', sans-serif" font-weight="600" font-size="20" fill="#1A1816" letter-spacing="-0.4">CBarmore CPA</text>
+          </svg>
+        </a>
+        <p>Tax and forensic accounting.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Bookkeeping &amp; tax</a></li>
+          <li><a href="#services">Advisory &amp; planning</a></li>
+          <li><a href="#services">Fractional CFO</a></li>
+          <li><a href="#services">Forensic &amp; fraud</a></li>
+          <li><a href="#services">Business valuation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Firm</h4>
+        <ul>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="#how">How I work</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://www.linkedin.com/in/cbarmorecpa/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://x.com/The_Ai_CPA" target="_blank" rel="noopener">@The_Ai_CPA</a></li>
+          <li><a href="mailto:charlie@cbarmorecpa.com">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-disclosure">
+        CBarmore CPA is a trade name of Charles J Barmore CPA PC, a Georgia professional corporation and licensed CPA firm. All services provided pursuant to engagement letter.
+      </div>
+      <div class="footer-meta">&copy; 2026 Charles J Barmore CPA PC</div>
+    </div>
+  </div>
+</footer>
 
-        // Contact form
-        document.getElementById('contact-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
+<script>
+  document.getElementById('contact-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = document.getElementById('submit-btn');
+    const formStatus = document.getElementById('form-status');
+    const payload = {
+      firstName: document.getElementById('firstName').value.trim(),
+      lastName: document.getElementById('lastName').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      service: document.getElementById('service').value,
+      message: document.getElementById('message').value.trim(),
+    };
 
-            const submitBtn = document.getElementById('submit-btn');
-            const formStatus = document.getElementById('form-status');
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const email = document.getElementById('email').value;
-            const service = document.getElementById('service').value;
-            const message = document.getElementById('message').value;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    formStatus.textContent = '';
+    formStatus.className = 'form-status';
 
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-            formStatus.textContent = '';
-            formStatus.className = 'form-status';
-
-            try {
-                const response = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ firstName, lastName, email, service, message }),
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    formStatus.textContent = 'Message sent successfully!';
-                    formStatus.className = 'form-status success';
-                    document.getElementById('contact-form').reset();
-                } else {
-                    formStatus.textContent = data.error || 'Failed to send message. Please try again.';
-                    formStatus.className = 'form-status error';
-                }
-            } catch (error) {
-                formStatus.textContent = 'Failed to send message. Please try again.';
-                formStatus.className = 'form-status error';
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Submit Request';
-            }
-        });
-    </script>
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (response.ok) {
+        formStatus.textContent = 'Thanks — I\'ll be in touch within one business day.';
+        formStatus.className = 'form-status success';
+        document.getElementById('contact-form').reset();
+      } else {
+        formStatus.textContent = data.error || 'Something went wrong. Please try again or email me directly.';
+        formStatus.className = 'form-status error';
+      }
+    } catch (err) {
+      formStatus.textContent = 'Something went wrong. Please try again or email me directly.';
+      formStatus.className = 'form-status error';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Send message <span class="arrow">&rarr;</span>';
+    }
+  });
+</script>
 </body>
 </html>

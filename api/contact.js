@@ -22,11 +22,17 @@ export default async function handler(req, res) {
 
     // Map service values to readable names
     const serviceNames = {
+        'bookkeeping-tax': 'Bookkeeping & Tax',
+        'advisory-planning': 'Advisory & Planning',
+        'fractional-cfo': 'Fractional CFO',
+        'forensic': 'Forensic & Fraud',
+        'valuation': 'Business Valuation (notify)',
+        'multiple': 'Multiple Services',
+        'not-sure': 'Not Sure Yet',
+        // Legacy keys (kept for safety in case any cached form posts older values)
         'tax-planning': 'Tax Planning & Compliance',
         'bookkeeping': 'Accounting & Bookkeeping',
-        'consulting': 'Business Consulting',
-        'multiple': 'Multiple Services',
-        'not-sure': 'Not Sure Yet'
+        'consulting': 'Business Consulting'
     };
 
     const serviceName = serviceNames[service] || service;
