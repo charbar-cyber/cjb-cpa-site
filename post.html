@@ -1,387 +1,724 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading... | Charles J Barmore CPA PC</title>
-    <meta name="description" content="Read insights on tax strategy, business operations, and accounting from Charles Barmore CPA.">
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Loading… — CBarmore CPA</title>
+<meta name="description" content="Notes on tax, advisory, and forensic work from Charlie Barmore, CPA." />
+<link rel="icon" type="image/svg+xml" href="/assets/cjb-cpa-pc-logos/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --bg-alt: #F1EFE9;
+    --card: #FFFFFF;
+    --border: #E2DED6;
+    --accent: #B85439;
+    --accent-hover: #A04830;
+    --text-1: #1A1816;
+    --text-2: #5C5750;
+    --text-3: #97928A;
+    --font-sans: 'IBM Plex Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --max-width: 1280px;
+    --gutter: 80px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text-1);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  /* Nav */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250, 250, 247, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-1);
+    text-decoration: none;
+    height: 36px;
+  }
+  .logo-svg { height: 36px; width: auto; display: block; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--text-2);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--text-1); }
+  .nav-links a.btn-accent,
+  .nav-links a.btn-accent:hover { color: #FFFFFF; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 20px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-accent { background: var(--accent); color: #FFFFFF; }
+  .btn-accent:hover { background: var(--accent-hover); }
+
+  /* Post layout */
+  .post-container { padding: 56px 0 96px; }
+  .post-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    text-decoration: none;
+    margin-bottom: 40px;
+    transition: color 0.15s ease;
+  }
+  .post-back:hover { color: var(--accent); }
+
+  .post-hero-cover {
+    margin-bottom: 36px;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 21 / 9;
+    background: var(--bg-alt);
+  }
+  .post-hero-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .post-header .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .post-header .post-category { color: var(--accent); font-weight: 500; }
+  .post-header .post-date { color: var(--text-3); }
+
+  .post-hero-title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(32px, 4.5vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin-bottom: 56px;
+    max-width: 820px;
+  }
+
+  /* Post body */
+  .post-body {
+    max-width: 720px;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text-1);
+    font-weight: 400;
+  }
+  .post-body .notion-paragraph { margin-bottom: 1.3em; }
+  .post-body .notion-h1 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 30px;
+    margin: 56px 0 16px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  .post-body .notion-h2 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 24px;
+    margin: 44px 0 14px;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+  .post-body .notion-h3 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 19px;
+    margin: 32px 0 12px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .post-body .notion-list { margin-bottom: 1.3em; padding-left: 24px; }
+  .post-body .notion-list-item { margin-bottom: 8px; }
+  .post-body .notion-quote {
+    border-left: 3px solid var(--accent);
+    padding: 4px 0 4px 20px;
+    margin: 32px 0;
+    font-style: italic;
+    color: var(--text-2);
+  }
+  .post-body .notion-callout {
+    display: flex;
+    gap: 14px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 22px;
+    margin: 28px 0;
+  }
+  .post-body .callout-icon { font-size: 18px; flex-shrink: 0; line-height: 1.4; }
+  .post-body .callout-content { flex: 1; }
+  .post-body .notion-code {
+    background: var(--text-1);
+    color: #F0EBE3;
+    border-radius: 8px;
+    padding: 20px 22px;
+    margin: 28px 0;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    overflow-x: auto;
+  }
+  .post-body .code-language {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #97928A;
+    margin-bottom: 10px;
+  }
+  .post-body .notion-code pre { overflow-x: auto; line-height: 1.55; }
+  .post-body .inline-code {
+    background: var(--bg-alt);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.92em;
+    color: var(--accent);
+  }
+  .post-body .notion-image { margin: 36px 0; }
+  .post-body .notion-image img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+  }
+  .post-body .notion-image figcaption {
+    font-size: 13px;
+    color: var(--text-3);
+    text-align: center;
+    margin-top: 12px;
+    font-style: italic;
+  }
+  .post-body .notion-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+  .post-body .notion-todo {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .post-body .todo-checkbox {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 3px;
+    font-size: 12px;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .post-body .notion-toggle {
+    margin: 20px 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    background: var(--card);
+  }
+  .post-body .notion-toggle summary {
+    cursor: pointer;
+    font-weight: 500;
+    list-style: none;
+  }
+  .post-body .notion-toggle summary::-webkit-details-marker { display: none; }
+  .post-body .notion-toggle .toggle-content {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+  .post-body a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-color: rgba(184, 84, 57, 0.35);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.15s ease;
+  }
+  .post-body a:hover { text-decoration-color: var(--accent); }
+  .post-body .notion-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 28px 0;
+    font-size: 14px;
+  }
+  .post-body .notion-table td,
+  .post-body .notion-table th {
+    border-bottom: 1px solid var(--border);
+    padding: 12px 14px;
+    text-align: left;
+  }
+  .post-body .notion-table th {
+    font-weight: 600;
+    background: var(--bg-alt);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-3);
+  }
+  .post-body .notion-bookmark {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 20px 0;
+    color: var(--accent);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+  .post-body .notion-bookmark:hover { border-color: var(--accent); }
+  .post-body .notion-video,
+  .post-body .notion-embed {
+    margin: 28px 0;
+    aspect-ratio: 16 / 9;
+  }
+  .post-body .notion-video iframe,
+  .post-body .notion-video video,
+  .post-body .notion-embed iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    border: 0;
+  }
+  .post-body .notion-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin: 28px 0;
+  }
+
+  /* States */
+  .posts-loading, .posts-error {
+    text-align: center;
+    padding: 60px 0;
+    color: var(--text-3);
+    font-size: 14px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.04em;
+  }
+  .loading-spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--border); padding: 56px 0 28px; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  .footer-brand .logo { margin-bottom: 12px; display: inline-flex; }
+  .footer-brand p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text-3);
+    font-weight: 300;
+    max-width: 300px;
+  }
+  .footer-col h4 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--text-3);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 8px; }
+  .footer-col a {
+    color: var(--text-2);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--accent); }
+  .footer-bottom {
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .footer-disclosure {
+    font-size: 11px;
+    color: var(--text-3);
+    line-height: 1.6;
+    max-width: 600px;
+  }
+  .footer-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-3);
+    letter-spacing: 0.06em;
+  }
+
+  /* Responsive */
+  @media (max-width: 960px) {
+    :root { --gutter: 24px; }
+    .post-container { padding: 32px 0 64px; }
+    .post-body { font-size: 16px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 560px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="/" class="nav-logo">
-                <img src="assets/cjb-cpa-pc-logos/logo-header-dark.svg" alt="CBarmore CPA" class="logo-img">
-            </a>
-            <div class="nav-links">
-                <a href="/about">About</a>
-                <a href="/pricing">Pricing</a>
-                <a href="/#services">Services</a>
-                <a href="/#contact">Contact</a>
-            </div>
-            <button class="nav-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
 
-    <!-- Post Container -->
-    <article class="post-container">
-        <div class="container">
-            <!-- Back link -->
-            <a href="/insights" class="post-back">&larr; Back to Insights</a>
+<nav>
+  <div class="container nav-inner">
+    <a href="/" class="logo" aria-label="CBarmore CPA home">
+      <svg class="logo-svg" viewBox="0 0 220 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="cbGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C25E40"/><stop offset="100%" stop-color="#A04830"/></linearGradient></defs>
+        <rect x="0" y="2" width="40" height="40" rx="8" fill="url(#cbGrad)"/>
+        <text x="20" y="30" text-anchor="middle" font-family="'IBM Plex Sans', sans-serif" font-weight="600" font-size="20" fill="#FFFFFF" letter-spacing="-0.4">CB</text>
+        <text x="50" y="30" font-family="'IBM Plex Sans', sans-serif" font-weight="600" font-size="20" fill="#1A1816" letter-spacing="-0.4">CBarmore CPA</text>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#contact" class="btn btn-accent">Get in touch</a></li>
+    </ul>
+  </div>
+</nav>
 
-            <!-- Post Header (populated by JS) -->
-            <header class="post-header" id="post-header">
-                <div class="posts-loading" id="post-loading">
-                    <span class="loading-spinner"></span>
-                    Loading post...
-                </div>
-            </header>
+<article class="post-container">
+  <div class="container">
+    <a href="/blog" class="post-back">&larr; Back to blog</a>
 
-            <!-- Post Content (populated by JS) -->
-            <div class="post-body" id="post-body"></div>
+    <header class="post-header" id="post-header">
+      <div class="posts-loading" id="post-loading">
+        <span class="loading-spinner"></span>Loading post&hellip;
+      </div>
+    </header>
 
-            <!-- Error state -->
-            <div class="posts-error" id="post-error" style="display: none;">
-                <p>Unable to load this post. Please try again later.</p>
-                <a href="/insights" class="btn btn-secondary">Back to Insights</a>
-            </div>
-        </div>
-    </article>
+    <div class="post-body" id="post-body"></div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Charles J Barmore CPA PC. All rights reserved.</p>
-        </div>
-    </footer>
+    <div class="posts-error" id="post-error" style="display: none;">
+      <p>Unable to load this post. Please try again later.</p>
+      <p style="margin-top: 16px;"><a href="/blog" style="color: var(--accent);">&larr; Back to blog</a></p>
+    </div>
+  </div>
+</article>
 
-    <script>
-        // Mobile nav toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo" aria-label="CBarmore CPA home">
+          <svg class="logo-svg" viewBox="0 0 220 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs><linearGradient id="cbGradFooter" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C25E40"/><stop offset="100%" stop-color="#A04830"/></linearGradient></defs>
+            <rect x="0" y="2" width="40" height="40" rx="8" fill="url(#cbGradFooter)"/>
+            <text x="20" y="30" text-anchor="middle" font-family="'IBM Plex Sans', sans-serif" font-weight="600" font-size="20" fill="#FFFFFF" letter-spacing="-0.4">CB</text>
+            <text x="50" y="30" font-family="'IBM Plex Sans', sans-serif" font-weight="600" font-size="20" fill="#1A1816" letter-spacing="-0.4">CBarmore CPA</text>
+          </svg>
+        </a>
+        <p>Tax and forensic accounting.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/#services">Bookkeeping &amp; tax</a></li>
+          <li><a href="/#services">Advisory &amp; planning</a></li>
+          <li><a href="/#services">Fractional CFO</a></li>
+          <li><a href="/#services">Forensic &amp; fraud</a></li>
+          <li><a href="/#services">Business valuation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Firm</h4>
+        <ul>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/#about">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://www.linkedin.com/in/cbarmorecpa/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://x.com/The_Ai_CPA" target="_blank" rel="noopener">@The_Ai_CPA</a></li>
+          <li><a href="mailto:charlie@cbarmorecpa.com">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-disclosure">
+        CBarmore CPA is a trade name of Charles J Barmore CPA PC, a Georgia professional corporation and licensed CPA firm. All services provided pursuant to engagement letter.
+      </div>
+      <div class="footer-meta">&copy; 2026 Charles J Barmore CPA PC</div>
+    </div>
+  </div>
+</footer>
 
-        navToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('open');
-            this.classList.toggle('open');
-        });
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const postId = urlParams.get('id');
 
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('open');
-                navToggle.classList.remove('open');
-            });
-        });
+  const postHeader = document.getElementById('post-header');
+  const postBody = document.getElementById('post-body');
+  const postLoading = document.getElementById('post-loading');
+  const postError = document.getElementById('post-error');
 
-        // Get post ID from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const postId = urlParams.get('id');
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
 
-        // DOM Elements
-        const postHeader = document.getElementById('post-header');
-        const postBody = document.getElementById('post-body');
-        const postLoading = document.getElementById('post-loading');
-        const postError = document.getElementById('post-error');
-
-        // Format date
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
+  function renderRichText(richTextArray) {
+    if (!richTextArray || richTextArray.length === 0) return '';
+    return richTextArray.map(text => {
+      let content = text.plain_text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+      if (text.annotations) {
+        if (text.annotations.bold) content = `<strong>${content}</strong>`;
+        if (text.annotations.italic) content = `<em>${content}</em>`;
+        if (text.annotations.strikethrough) content = `<del>${content}</del>`;
+        if (text.annotations.underline) content = `<u>${content}</u>`;
+        if (text.annotations.code) content = `<code class="inline-code">${content}</code>`;
+        if (text.annotations.color && text.annotations.color !== 'default') {
+          content = `<span class="color-${text.annotations.color}">${content}</span>`;
         }
+      }
+      if (text.href) content = `<a href="${text.href}" target="_blank" rel="noopener noreferrer">${content}</a>`;
+      return content;
+    }).join('');
+  }
 
-        // Render rich text (handles bold, italic, code, links, etc.)
-        function renderRichText(richTextArray) {
-            if (!richTextArray || richTextArray.length === 0) return '';
-
-            return richTextArray.map(text => {
-                let content = text.plain_text;
-
-                // Escape HTML
-                content = content
-                    .replace(/&/g, '&amp;')
-                    .replace(/</g, '&lt;')
-                    .replace(/>/g, '&gt;');
-
-                // Apply annotations
-                if (text.annotations) {
-                    if (text.annotations.bold) {
-                        content = `<strong>${content}</strong>`;
-                    }
-                    if (text.annotations.italic) {
-                        content = `<em>${content}</em>`;
-                    }
-                    if (text.annotations.strikethrough) {
-                        content = `<del>${content}</del>`;
-                    }
-                    if (text.annotations.underline) {
-                        content = `<u>${content}</u>`;
-                    }
-                    if (text.annotations.code) {
-                        content = `<code class="inline-code">${content}</code>`;
-                    }
-                    if (text.annotations.color && text.annotations.color !== 'default') {
-                        content = `<span class="color-${text.annotations.color}">${content}</span>`;
-                    }
-                }
-
-                // Handle links
-                if (text.href) {
-                    content = `<a href="${text.href}" target="_blank" rel="noopener noreferrer">${content}</a>`;
-                }
-
-                return content;
-            }).join('');
+  function renderBlock(block) {
+    const type = block.type;
+    switch (type) {
+      case 'paragraph': {
+        const pText = renderRichText(block.paragraph?.rich_text);
+        return pText ? `<p class="notion-paragraph">${pText}</p>` : '<p class="notion-paragraph">&nbsp;</p>';
+      }
+      case 'heading_1': return `<h1 class="notion-h1">${renderRichText(block.heading_1?.rich_text)}</h1>`;
+      case 'heading_2': return `<h2 class="notion-h2">${renderRichText(block.heading_2?.rich_text)}</h2>`;
+      case 'heading_3': return `<h3 class="notion-h3">${renderRichText(block.heading_3?.rich_text)}</h3>`;
+      case 'bulleted_list_item': {
+        let c = renderRichText(block.bulleted_list_item?.rich_text);
+        if (block.children) c += renderBlocks(block.children);
+        return `<li class="notion-list-item">${c}</li>`;
+      }
+      case 'numbered_list_item': {
+        let c = renderRichText(block.numbered_list_item?.rich_text);
+        if (block.children) c += renderBlocks(block.children);
+        return `<li class="notion-list-item">${c}</li>`;
+      }
+      case 'to_do': {
+        const checked = block.to_do?.checked ? 'checked' : '';
+        const todoText = renderRichText(block.to_do?.rich_text);
+        return `<div class="notion-todo ${checked}"><span class="todo-checkbox">${checked ? '&#10003;' : ''}</span><span class="todo-text">${todoText}</span></div>`;
+      }
+      case 'toggle': {
+        const t = renderRichText(block.toggle?.rich_text);
+        const c = block.children ? renderBlocks(block.children) : '';
+        return `<details class="notion-toggle"><summary>${t}</summary><div class="toggle-content">${c}</div></details>`;
+      }
+      case 'code': {
+        const codeText = block.code?.rich_text?.map(t => t.plain_text).join('') || '';
+        const language = block.code?.language || 'plain text';
+        const escapedCode = codeText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return `<div class="notion-code"><div class="code-language">${language}</div><pre><code>${escapedCode}</code></pre></div>`;
+      }
+      case 'quote':
+        return `<blockquote class="notion-quote">${renderRichText(block.quote?.rich_text)}</blockquote>`;
+      case 'callout': {
+        const icon = block.callout?.icon?.emoji || '';
+        const text = renderRichText(block.callout?.rich_text);
+        const children = block.children ? renderBlocks(block.children) : '';
+        return `<div class="notion-callout"><span class="callout-icon">${icon}</span><div class="callout-content">${text}${children}</div></div>`;
+      }
+      case 'divider': return '<hr class="notion-divider">';
+      case 'image': {
+        const url = block.image?.file?.url || block.image?.external?.url || '';
+        const caption = block.image?.caption?.length > 0 ? renderRichText(block.image.caption) : '';
+        return `<figure class="notion-image"><img src="${url}" alt="${caption || 'Image'}" loading="lazy">${caption ? `<figcaption>${caption}</figcaption>` : ''}</figure>`;
+      }
+      case 'video': {
+        const url = block.video?.file?.url || block.video?.external?.url || '';
+        if (url.includes('youtube.com') || url.includes('youtu.be')) {
+          const id = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/)?.[1];
+          if (id) return `<div class="notion-video"><iframe src="https://www.youtube.com/embed/${id}" frameborder="0" allowfullscreen></iframe></div>`;
         }
-
-        // Render a single block
-        function renderBlock(block) {
-            const type = block.type;
-
-            switch (type) {
-                case 'paragraph':
-                    const pText = renderRichText(block.paragraph?.rich_text);
-                    return pText ? `<p class="notion-paragraph">${pText}</p>` : '<p class="notion-paragraph">&nbsp;</p>';
-
-                case 'heading_1':
-                    return `<h1 class="notion-h1">${renderRichText(block.heading_1?.rich_text)}</h1>`;
-
-                case 'heading_2':
-                    return `<h2 class="notion-h2">${renderRichText(block.heading_2?.rich_text)}</h2>`;
-
-                case 'heading_3':
-                    return `<h3 class="notion-h3">${renderRichText(block.heading_3?.rich_text)}</h3>`;
-
-                case 'bulleted_list_item':
-                    let bulletContent = renderRichText(block.bulleted_list_item?.rich_text);
-                    if (block.children) {
-                        bulletContent += renderBlocks(block.children);
-                    }
-                    return `<li class="notion-list-item">${bulletContent}</li>`;
-
-                case 'numbered_list_item':
-                    let numberedContent = renderRichText(block.numbered_list_item?.rich_text);
-                    if (block.children) {
-                        numberedContent += renderBlocks(block.children);
-                    }
-                    return `<li class="notion-list-item">${numberedContent}</li>`;
-
-                case 'to_do':
-                    const checked = block.to_do?.checked ? 'checked' : '';
-                    const todoText = renderRichText(block.to_do?.rich_text);
-                    return `<div class="notion-todo ${checked}">
-                        <span class="todo-checkbox">${checked ? '&#10003;' : ''}</span>
-                        <span class="todo-text">${todoText}</span>
-                    </div>`;
-
-                case 'toggle':
-                    const toggleTitle = renderRichText(block.toggle?.rich_text);
-                    const toggleChildren = block.children ? renderBlocks(block.children) : '';
-                    return `<details class="notion-toggle">
-                        <summary>${toggleTitle}</summary>
-                        <div class="toggle-content">${toggleChildren}</div>
-                    </details>`;
-
-                case 'code':
-                    const codeText = block.code?.rich_text?.map(t => t.plain_text).join('') || '';
-                    const language = block.code?.language || 'plain text';
-                    // Escape HTML in code
-                    const escapedCode = codeText
-                        .replace(/&/g, '&amp;')
-                        .replace(/</g, '&lt;')
-                        .replace(/>/g, '&gt;');
-                    return `<div class="notion-code">
-                        <div class="code-language">${language}</div>
-                        <pre><code>${escapedCode}</code></pre>
-                    </div>`;
-
-                case 'quote':
-                    return `<blockquote class="notion-quote">${renderRichText(block.quote?.rich_text)}</blockquote>`;
-
-                case 'callout':
-                    const calloutIcon = block.callout?.icon?.emoji || '';
-                    const calloutText = renderRichText(block.callout?.rich_text);
-                    let calloutChildren = '';
-                    if (block.children) {
-                        calloutChildren = renderBlocks(block.children);
-                    }
-                    return `<div class="notion-callout">
-                        <span class="callout-icon">${calloutIcon}</span>
-                        <div class="callout-content">${calloutText}${calloutChildren}</div>
-                    </div>`;
-
-                case 'divider':
-                    return '<hr class="notion-divider">';
-
-                case 'image':
-                    const imageUrl = block.image?.file?.url || block.image?.external?.url || '';
-                    const caption = block.image?.caption?.length > 0
-                        ? renderRichText(block.image.caption)
-                        : '';
-                    return `<figure class="notion-image">
-                        <img src="${imageUrl}" alt="${caption || 'Image'}" loading="lazy">
-                        ${caption ? `<figcaption>${caption}</figcaption>` : ''}
-                    </figure>`;
-
-                case 'video':
-                    const videoUrl = block.video?.file?.url || block.video?.external?.url || '';
-                    if (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
-                        // Extract YouTube video ID and embed
-                        const videoId = videoUrl.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/)?.[1];
-                        if (videoId) {
-                            return `<div class="notion-video">
-                                <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
-                            </div>`;
-                        }
-                    }
-                    return `<div class="notion-video">
-                        <video controls src="${videoUrl}"></video>
-                    </div>`;
-
-                case 'bookmark':
-                    const bookmarkUrl = block.bookmark?.url || '';
-                    return `<a href="${bookmarkUrl}" class="notion-bookmark" target="_blank" rel="noopener noreferrer">
-                        <span class="bookmark-url">${bookmarkUrl}</span>
-                    </a>`;
-
-                case 'embed':
-                    const embedUrl = block.embed?.url || '';
-                    return `<div class="notion-embed">
-                        <iframe src="${embedUrl}" frameborder="0"></iframe>
-                    </div>`;
-
-                case 'table':
-                    // Tables have children that are table_row blocks
-                    if (block.children) {
-                        const rows = block.children.map((row, index) => {
-                            const cells = row.table_row?.cells || [];
-                            const cellTag = index === 0 && block.table?.has_column_header ? 'th' : 'td';
-                            const cellsHtml = cells.map(cell =>
-                                `<${cellTag}>${renderRichText(cell)}</${cellTag}>`
-                            ).join('');
-                            return `<tr>${cellsHtml}</tr>`;
-                        }).join('');
-                        return `<table class="notion-table">${rows}</table>`;
-                    }
-                    return '';
-
-                case 'column_list':
-                    if (block.children) {
-                        const columns = block.children.map(col => {
-                            const colContent = col.children ? renderBlocks(col.children) : '';
-                            return `<div class="notion-column">${colContent}</div>`;
-                        }).join('');
-                        return `<div class="notion-columns">${columns}</div>`;
-                    }
-                    return '';
-
-                default:
-                    // Unknown block type - skip silently
-                    return '';
-            }
+        return `<div class="notion-video"><video controls src="${url}"></video></div>`;
+      }
+      case 'bookmark': {
+        const url = block.bookmark?.url || '';
+        return `<a href="${url}" class="notion-bookmark" target="_blank" rel="noopener noreferrer">${url}</a>`;
+      }
+      case 'embed': {
+        const url = block.embed?.url || '';
+        return `<div class="notion-embed"><iframe src="${url}" frameborder="0"></iframe></div>`;
+      }
+      case 'table': {
+        if (block.children) {
+          const rows = block.children.map((row, index) => {
+            const cells = row.table_row?.cells || [];
+            const cellTag = index === 0 && block.table?.has_column_header ? 'th' : 'td';
+            const cellsHtml = cells.map(cell => `<${cellTag}>${renderRichText(cell)}</${cellTag}>`).join('');
+            return `<tr>${cellsHtml}</tr>`;
+          }).join('');
+          return `<table class="notion-table">${rows}</table>`;
         }
-
-        // Render an array of blocks, handling list grouping
-        function renderBlocks(blocks) {
-            if (!blocks || blocks.length === 0) return '';
-
-            let html = '';
-            let currentListType = null;
-            let listItems = [];
-
-            function flushList() {
-                if (listItems.length > 0) {
-                    const tag = currentListType === 'bulleted_list_item' ? 'ul' : 'ol';
-                    html += `<${tag} class="notion-list">${listItems.join('')}</${tag}>`;
-                    listItems = [];
-                    currentListType = null;
-                }
-            }
-
-            blocks.forEach(block => {
-                const type = block.type;
-
-                if (type === 'bulleted_list_item' || type === 'numbered_list_item') {
-                    if (currentListType && currentListType !== type) {
-                        flushList();
-                    }
-                    currentListType = type;
-                    listItems.push(renderBlock(block));
-                } else {
-                    flushList();
-                    html += renderBlock(block);
-                }
-            });
-
-            flushList();
-            return html;
+        return '';
+      }
+      case 'column_list': {
+        if (block.children) {
+          const columns = block.children.map(col => {
+            const colContent = col.children ? renderBlocks(col.children) : '';
+            return `<div class="notion-column">${colContent}</div>`;
+          }).join('');
+          return `<div class="notion-columns">${columns}</div>`;
         }
+        return '';
+      }
+      default: return '';
+    }
+  }
 
-        // Render the post header
-        function renderHeader(post) {
-            const coverHtml = post.cover
-                ? `<div class="post-hero-cover"><img src="${post.cover}" alt="${post.title}"></div>`
-                : '';
+  function renderBlocks(blocks) {
+    if (!blocks || blocks.length === 0) return '';
+    let html = '';
+    let currentListType = null;
+    let listItems = [];
+    function flushList() {
+      if (listItems.length > 0) {
+        const tag = currentListType === 'bulleted_list_item' ? 'ul' : 'ol';
+        html += `<${tag} class="notion-list">${listItems.join('')}</${tag}>`;
+        listItems = [];
+        currentListType = null;
+      }
+    }
+    blocks.forEach(block => {
+      const type = block.type;
+      if (type === 'bulleted_list_item' || type === 'numbered_list_item') {
+        if (currentListType && currentListType !== type) flushList();
+        currentListType = type;
+        listItems.push(renderBlock(block));
+      } else {
+        flushList();
+        html += renderBlock(block);
+      }
+    });
+    flushList();
+    return html;
+  }
 
-            postHeader.innerHTML = `
-                ${coverHtml}
-                <div class="post-meta">
-                    <span class="post-category">${post.category}</span>
-                    <span class="post-date">${formatDate(post.date)}</span>
-                </div>
-                <h1 class="post-hero-title">${post.title}</h1>
-            `;
-        }
+  function renderHeader(post) {
+    const coverHtml = post.cover
+      ? `<div class="post-hero-cover"><img src="${post.cover}" alt="${post.title}"></div>`
+      : '';
+    postHeader.innerHTML = `
+      ${coverHtml}
+      <div class="post-meta">
+        <span class="post-category">${post.category}</span>
+        <span class="post-date">${formatDate(post.date)}</span>
+      </div>
+      <h1 class="post-hero-title">${post.title}</h1>
+    `;
+  }
 
-        // Fetch and render the post
-        async function loadPost() {
-            if (!postId) {
-                postLoading.style.display = 'none';
-                postError.style.display = 'block';
-                return;
-            }
+  async function loadPost() {
+    if (!postId) {
+      postLoading.style.display = 'none';
+      postError.style.display = 'block';
+      return;
+    }
+    try {
+      const response = await fetch(`/api/post?id=${postId}`);
+      if (!response.ok) throw new Error('Failed to fetch post');
+      const post = await response.json();
+      document.title = `${post.title} — CBarmore CPA`;
+      renderHeader(post);
+      postBody.innerHTML = renderBlocks(post.blocks);
+      postLoading.style.display = 'none';
+    } catch (error) {
+      console.error('Error loading post:', error);
+      postLoading.style.display = 'none';
+      postError.style.display = 'block';
+    }
+  }
 
-            try {
-                const response = await fetch(`/api/post?id=${postId}`);
-
-                if (!response.ok) {
-                    throw new Error('Failed to fetch post');
-                }
-
-                const post = await response.json();
-
-                // Update page title
-                document.title = `${post.title} | Charles J Barmore CPA PC`;
-
-                // Render header
-                renderHeader(post);
-
-                // Render content blocks
-                postBody.innerHTML = renderBlocks(post.blocks);
-
-                // Hide loading
-                postLoading.style.display = 'none';
-
-            } catch (error) {
-                console.error('Error loading post:', error);
-                postLoading.style.display = 'none';
-                postError.style.display = 'block';
-            }
-        }
-
-        // Load the post
-        loadPost();
-    </script>
+  loadPost();
+</script>
 </body>
 </html>
